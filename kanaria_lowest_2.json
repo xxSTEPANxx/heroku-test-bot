@@ -1,0 +1,33 @@
+{
+    "query": "\n  query NFTidsPaginattionQuery(\n    $where: nfts_bool_exp!\n    $orderBy: [nfts_order_by!]\n    $limit: Int!\n    $offset: Int!\n  ) {\n    nfts(where: $where, order_by: $orderBy, limit: $limit, offset: $offset) {\n      id\n    }\n    nfts_aggregate(where: $where) {\n      aggregate {\n        count\n      }\n    }\n  }\n  \n  fragment NFT on nfts {\n    id\n    block\n    burned\n    forsale\n    collectionId\n    symbol\n    metadata\n    metadata_image\n    metadata_name\n    owner\n    rootowner\n    sn\n    transferable\n    priority\n    updated_at\n    equipped_id\n    resources {\n      base_id\n      id\n      src\n      slot_id\n      metadata\n      thumb\n      theme\n      pending\n      resources_parts_aggregate {\n        aggregate {\n          count\n        }\n      }\n    }\n    collection {\n      max\n    }\n  }\n\n",
+    "variables": {
+        "where": {
+            "burned": {
+                "_eq": ""
+            },
+            "collectionId": {
+                "_in": [
+                    "e0b9bdcc456a36497a-KANBIRD"
+                ]
+            },
+            "symbol": {
+                "_in": [
+                    "KANL"
+                ]
+            },
+            "forsale": {
+                "_neq": 0
+            }
+        },
+        "orderBy": [
+            {
+                "forsale": "asc"
+            },
+            {
+                "sn": "asc"
+            }
+        ],
+        "limit": 20,
+        "offset": 0
+    }
+}
