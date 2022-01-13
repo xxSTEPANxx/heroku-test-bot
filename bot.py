@@ -1,10 +1,8 @@
 import config
 import telebot
-import requests
-import time
-from bs4 import BeautifulSoup as bs
 
 import test
+
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 bot = telebot.TeleBot(config.token)
@@ -28,20 +26,6 @@ def handle_text(message):
         bot.send_message(message.chat.id, answer[0])
         bot.send_message(message.chat.id, answer[1])
 
-
-
-
-#
-#     bot.send_message(message.chat.id, 'Надеюсь работает. \n Когда нфт появятся я пришлю тебе ссылку )')
-#
-#     while not main.check_box(1):
-#         time.sleep(1)
-#
-#     else:
-#         answer = 'YESSSSSSSSSSSSSS' + '\n' + \
-#                  'https://kanaria.rmrk.app/catalogue?symbol=YLTD21&page=1&priceMax=1&sortBy=price'
-#         bot.send_message(message.chat.id, answer)
-#
 bot.polling()
 
 
